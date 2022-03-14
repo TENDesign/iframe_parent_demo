@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const getIframe = document.createElement('iframe');
     const storeIframe = document.createElement('iframe');
 
+    const targetOrigin = 'https://gallant-yalow-dc416b.netlify.app'
+
     getTokenButton.addEventListener('click', handleGetClick, false);
     storeTokenButton.addEventListener('click', handleStoreClick, false);
 
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 RBDSCode: 568085,
                 lid: 'test123',
                 optIn: 'Y'
-            }, '*');
+            }, targetOrigin);
         };
         getTokenResponse.parentElement.append(getIframe);
         getIframe.src = iframeURL;
@@ -88,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         storeIframe.referrerPolicy = 'strict-origin-when-cross-origin';
         storeIframe.onload = () => {
             storeTokenResponse.innerText = 'iframe loaded...'
-            storeIframe.contentWindow.postMessage({action: 'STORE_TOKENS', i_t, r_t, exp}, '*');
+            storeIframe.contentWindow.postMessage({action: 'STORE_TOKENS', i_t, r_t, exp}, targetOrigin);
         };
         storeTokenResponse.parentElement.append(storeIframe);
         storeIframe.src = iframeURL;
