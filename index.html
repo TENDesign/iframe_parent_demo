@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFframe Token Demo</title>
+    <style>
+        iframe {
+            height: 1px;
+            width: 1px;
+            position: absolute;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <div style="max-width: 50vw; padding: 5rem; border: 1px solid black;">
+        <h3>IFrame Token Exchange Demo</h3>
+        <div>
+            <div>
+                <button style="display: block;" id="getTokenButton">
+                    get token
+                </button>
+                <p id="getTokenResponse">Press button to get token...</p>
+            </div>
+            <hr>
+            <div>
+                <button  style="display: block;"  id="storeTokenButton">
+                    store token
+                </button>
+                <p id="storeTokenResponse">Press button to store token...</p>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
