@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getIframe = document.createElement('iframe');
     const storeIframe = document.createElement('iframe');
 
-    const targetOrigin = 'https://gallant-yalow-dc416b.netlify.app'
+    const targetOrigin = '*'
 
     getTokenButton.addEventListener('click', handleGetClick, false);
     storeTokenButton.addEventListener('click', handleStoreClick, false);
