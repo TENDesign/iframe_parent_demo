@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             r_t: ${r_t}
                             exp: ${exp}
                         `;
-                        getIframe.remove();
+                        // getIframe.remove();
                     }
                 } else {
                     getTokenResponse.innerText = `no tokens returned`;
-                    getIframe.remove();
+                    // getIframe.remove();
                 }
                 return;
             }
@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             r_t: ${r_t}
                             exp: ${exp}
                         `;
-                        storeIframe.remove();
+                        // storeIframe.remove();
                     }
                 } else {
                     storeTokenResponse.innerText = `error: no tokens stored`;
-                    storeIframe.remove();
+                    // storeIframe.remove();
                 }
                 return;
             }
