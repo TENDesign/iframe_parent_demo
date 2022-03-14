@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('message', async (event) => {
         const { action, i_t, r_t, exp } = event.data;
+        console.log(event.data)
         switch(event.data.action) {
             case 'GET_TOKENS_RESPONSE': {
                 if (i_t, r_t, exp) {
