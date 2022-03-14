@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function handleGetClick() {
         const getPathName = 'get.html';
-        const iframeURL = `http://localhost:5501/${getPathName}`;
+        const iframeURL = `https://gallant-yalow-dc416b.netlify.app/${getPathName}`;
 
         getTokenResponse.innerText = 'Getting token...'
         
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         putSSOTokens({i_t, r_t, exp});
 
         const storePathName = 'store.html';
-        const iframeURL = `http://localhost:5501/${storePathName}`;
+        const iframeURL = `https://gallant-yalow-dc416b.netlify.app/${storePathName}`;
         storeTokenResponse.innerText = 'Storing token...'
         storeIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
         storeIframe.referrerPolicy = 'strict-origin-when-cross-origin';
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //     const storePathName = 'store.html';
 //     const returnUrl = `http://${window.location.host}/set-return.html`;
-//     const redirectUrl = `http://localhost:5501/${storePathName}?returnUrl=${returnUrl}&i_t=${i_t}&r_t=${r_t}&exp=${exp}`;
+//     const redirectUrl = `https://gallant-yalow-dc416b.netlify.app/${storePathName}?returnUrl=${returnUrl}&i_t=${i_t}&r_t=${r_t}&exp=${exp}`;
 
 //     storeTokenResponse.innerText = 'Storing tokens...'
 //     const storeIframe = document.createElement('iframe');
