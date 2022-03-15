@@ -56,15 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     async function handleGetClick() {
-        const getPathName = 'get.html';
-        const iframeURL = `${targetOrigin}/${getPathName}`;
-
         getTokenResponse.innerText = 'Getting token...'
-        
         getIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
         getIframe.referrerPolicy = 'strict-origin-when-cross-origin';
         getTokenResponse.parentElement.append(getIframe);
-        getIframe.src = iframeURL;
+        getIframe.src = targetOrigin;
         getIframe.onload = () => {
             getTokenResponse.innerText = 'iframe loaded...'
             getIframe.contentWindow.postMessage({
@@ -82,16 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const i_t = btoa(`i_t.test${new Date().getTime()}`);
         const r_t = btoa(`r_t.test${new Date().getTime()}`);
         const exp = btoa(`exp.test${new Date().getTime()}`);
-
         putSSOTokens({i_t, r_t, exp});
 
-        const storePathName = 'store.html';
-        const iframeURL = `${targetOrigin}/${storePathName}`;
         storeTokenResponse.innerText = 'Storing token...'
         storeIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
         storeIframe.referrerPolicy = 'strict-origin-when-cross-origin';
         storeTokenResponse.parentElement.append(storeIframe);
-        storeIframe.src = iframeURL;
+        storeIframe.src = targetOrigin;
         storeIframe.onload = () => {
             storeTokenResponse.innerText = 'iframe loaded...'
             storeIframe.contentWindow.postMessage({
