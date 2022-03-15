@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getIframe = document.createElement('iframe');
     const storeIframe = document.createElement('iframe');
 
-    const targetOrigin = 'https://pedantic-chandrasekhar-e7a1e4.netlify.app'
+    const targetOrigin = 'https://gallant-yalow-dc416b.netlify.app'
 
     getTokenButton.addEventListener('click', handleGetClick, false);
     storeTokenButton.addEventListener('click', handleStoreClick, false);
