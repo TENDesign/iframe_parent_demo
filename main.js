@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function handleGetClick() {
         const getPathName = 'get.html';
-        const iframeURL = `https://gallant-yalow-dc416b.netlify.app/${getPathName}`;
+        const iframeURL = `${targetOrigin}/${getPathName}`;
 
         getTokenResponse.innerText = 'Getting token...'
         
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         putSSOTokens({i_t, r_t, exp});
 
         const storePathName = 'store.html';
-        const iframeURL = `https://gallant-yalow-dc416b.netlify.app/${storePathName}`;
+        const iframeURL = `${targetOrigin}/${storePathName}`;
         storeTokenResponse.innerText = 'Storing token...'
         storeIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
         storeIframe.referrerPolicy = 'strict-origin-when-cross-origin';
