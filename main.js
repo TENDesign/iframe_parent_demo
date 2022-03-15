@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('message', async (event) => {
         if (event.origin !== targetOrigin) return;
         console.log(event);
-        const { action, i_t, r_t, exp } = event.data.payload;
-        switch(action) {
+        const { i_t, r_t, exp } = event.data.payload;
+        switch(event.data.action) {
             case 'GET_TOKENS_RESPONSE': {
                 if (i_t, r_t, exp) {
                     const putTokenReq = await putSSOTokens({i_t, r_t, exp});
