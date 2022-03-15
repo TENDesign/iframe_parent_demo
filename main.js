@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         getIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
         getIframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        getTokenResponse.parentElement.append(getIframe);
+        getIframe.src = iframeURL;
         getIframe.onload = () => {
             getTokenResponse.innerText = 'iframe loaded...'
             console.log(getIframe.contentWindow);
@@ -74,8 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 optIn: 'Y'
             }, targetOrigin);
         };
-        getTokenResponse.parentElement.append(getIframe);
-        getIframe.src = iframeURL;
     }
 
     async function handleStoreClick() {
