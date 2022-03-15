@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         getIframe.referrerPolicy = 'strict-origin-when-cross-origin';
         getIframe.onload = () => {
             getTokenResponse.innerText = 'iframe loaded...'
+            console.log(getIframe.contentWindow);
             getIframe.contentWindow.postMessage({
                 action: 'GET_TOKENS',
                 RBDSCode: 568085,
