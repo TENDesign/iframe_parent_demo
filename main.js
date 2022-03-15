@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         getIframe.src = iframeURL;
         getIframe.onload = () => {
             getTokenResponse.innerText = 'iframe loaded...'
-            console.log(getIframe.contentWindow);
             getIframe.contentWindow.postMessage({
                 action: 'GET_TOKENS',
                 RBDSCode: 568085,
@@ -90,12 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
         storeTokenResponse.innerText = 'Storing token...'
         storeIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
         storeIframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        storeTokenResponse.parentElement.append(storeIframe);
+        storeIframe.src = iframeURL;
         storeIframe.onload = () => {
             storeTokenResponse.innerText = 'iframe loaded...'
             storeIframe.contentWindow.postMessage({action: 'STORE_TOKENS', i_t, r_t, exp}, targetOrigin);
         };
-        storeTokenResponse.parentElement.append(storeIframe);
-        storeIframe.src = iframeURL;
     }
 
     async function putSSOTokens(ssoToken) {
