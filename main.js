@@ -13,9 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     storeTokenButton.addEventListener('click', handleStoreClick, false);
 
     window.addEventListener('message', async (event) => {
+        console.log(event);
         const { action, i_t, r_t, exp } = event.data;
         console.log(event.data)
-        switch(event.data.action) {
+        switch(action) {
             case 'GET_TOKENS_RESPONSE': {
                 if (i_t, r_t, exp) {
                     const putTokenReq = await putSSOTokens({i_t, r_t, exp});
