@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     storeTokenButton.addEventListener('click', handleStoreClick, false);
 
     window.addEventListener('message', async (event) => {
+        if (event.origin !== targetOrigin) return;
         console.log(event);
         const { action, i_t, r_t, exp } = event.data;
         console.log(event.data)
