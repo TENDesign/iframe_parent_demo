@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('message', async (event) => {
         if (event.origin !== targetOrigin) return;
         console.log(event);
-        const { action, i_t, r_t, exp } = event.data;
-        console.log(event.data)
+        const { action, i_t, r_t, exp } = event.data.payload;
         switch(action) {
             case 'GET_TOKENS_RESPONSE': {
                 if (i_t, r_t, exp) {
@@ -71,9 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
             getTokenResponse.innerText = 'iframe loaded...'
             getIframe.contentWindow.postMessage({
                 action: 'GET_TOKENS',
-                RBDSCode: 568085,
-                lid: 'test123',
-                optIn: 'Y'
+                payload: {
+                    RBDSCode: 568085,
+                    lid: 'test123',
+                    optIn: 'Y'
+                }
             }, targetOrigin);
         };
     }
@@ -94,7 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
         storeIframe.src = iframeURL;
         storeIframe.onload = () => {
             storeTokenResponse.innerText = 'iframe loaded...'
-            storeIframe.contentWindow.postMessage({action: 'STORE_TOKENS', i_t, r_t, exp}, targetOrigin);
+            storeIframe.contentWindow.postMessage({
+                action: 'STORE_TOKENS', 
+                payload: {
+                    i_t, 
+                    r_t, 
+                    exp
+                }
+            }, targetOrigin);
         };
     }
 
