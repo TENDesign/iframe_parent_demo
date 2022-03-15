@@ -65,11 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             getTokenResponse.innerText = 'iframe loaded...'
             getIframe.contentWindow.postMessage({
                 action: 'GET_TOKENS',
-                payload: {
-                    RBDSCode: 568085,
-                    lid: 'test123',
-                    optIn: 'Y'
-                }
             }, targetOrigin);
         };
     }
