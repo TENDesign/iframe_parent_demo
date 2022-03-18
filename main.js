@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // const exp = btoa(`exp.test${new Date().getTime()}`);
         // putSSOTokens({i_t, r_t, exp});
 
-        const tokenReq = generateDppGatewayTokensService({
+        const tokenReq = await generateDppGatewayTokensService({
             "AccountNo": "037015121",
             "LoginUserName": "weitest-row30@purple.com",
             "LoginPassword": "YgU4bbEocw5zGfEbPd0poTY3aGp1eycS6Vb+4k/Q/cftRzBM3y3zQsD9nqCpUmv4+AtrRcaDyh9UvGcX4Bo2/Fu9ZjNx0VrqSR6HElJmMvv62xG4us5xwXanWJ11wGg4VQtmild60G1tQTSc77+5hyPGXyJkDEhds18gYvdNqfc=",
