@@ -44,7 +44,6 @@ async function handleNavigationRequest(event) {
 
 }
 
-
 self.addEventListener('fetch', async (event) => {
     if (event.request.method === 'GET' && event.request.mode === 'navigate') {
         const startIndexSearchTerm = '://';
@@ -52,12 +51,5 @@ self.addEventListener('fetch', async (event) => {
         const path = event.request.url.substring(event.request.url.indexOf('/', startIndex));
 
         if (!path.startsWith('/redirect')) event.respondWith(handleNavigationRequest(event));
-    }
-    else if (SITE_TYPE === SiteType.PWA && event.request.url.includes(self.location.origin)) {
-        event.respondWith(
-            caches.match(event.request).then(response => {
-                return response || fetch(event.request);
-            })
-        );
     }
 });
