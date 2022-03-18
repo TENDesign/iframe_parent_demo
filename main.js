@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const getIframe = document.createElement('iframe');
     const storeIframe = document.createElement('iframe');
 
-    const targetOrigin = 'https://gallant-yalow-dc416b.netlify.app'
+    // const targetOrigin = 'https://gallant-yalow-dc416b.netlify.app'
+    const targetOrigin = 'https://dpp-uat-sso.raimktg.com'
 
     getTokenButton.addEventListener('click', handleGetClick, false);
     storeTokenButton.addEventListener('click', handleStoreClick, false);
@@ -60,11 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
         getIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
         getIframe.referrerPolicy = 'strict-origin-when-cross-origin';
         getTokenResponse.parentElement.append(getIframe);
-        getIframe.src = targetOrigin;
+        getIframe.src = `${targetOrigin}/#/headlessTokens`;
         getIframe.onload = () => {
             getTokenResponse.innerText = 'iframe loaded...'
             getIframe.contentWindow.postMessage({
                 action: 'GET_TOKENS',
+                payload: {
+                    env: 'uat',
+                    brand: 'poc'
+                }
             }, targetOrigin);
         };
     }
