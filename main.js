@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         storeIframe.src = `${targetOrigin}/#/headlessTokens`;
         storeIframe.onload = () => {
             storeTokenResponse.innerText = 'iframe loaded...'
-            storeIframe.contentWindow.postMessage(messagePayload), targetOrigin);
+            storeIframe.contentWindow.postMessage(messagePayload, targetOrigin);
         };
     }
 
