@@ -92,7 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 payload: {
                     i_t, 
                     r_t, 
-                    exp
+                    exp,
+                    env: 'uat',
+                    brand: 'poc'
                 }
             }, targetOrigin);
         };
