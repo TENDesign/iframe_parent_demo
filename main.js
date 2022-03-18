@@ -75,10 +75,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function handleStoreClick() {
-        const i_t = btoa(`i_t.test${new Date().getTime()}`);
-        const r_t = btoa(`r_t.test${new Date().getTime()}`);
-        const exp = btoa(`exp.test${new Date().getTime()}`);
-        putSSOTokens({i_t, r_t, exp});
+        // const i_t = btoa(`i_t.test${new Date().getTime()}`);
+        // const r_t = btoa(`r_t.test${new Date().getTime()}`);
+        // const exp = btoa(`exp.test${new Date().getTime()}`);
+        // putSSOTokens({i_t, r_t, exp});
+
+        const tokenReq = generateDppGatewayTokensService({
+            "AccountNo": "037015121",
+            "LoginUserName": "weitest-row30@purple.com",
+            "LoginPassword": "YgU4bbEocw5zGfEbPd0poTY3aGp1eycS6Vb+4k/Q/cftRzBM3y3zQsD9nqCpUmv4+AtrRcaDyh9UvGcX4Bo2/Fu9ZjNx0VrqSR6HElJmMvv62xG4us5xwXanWJ11wGg4VQtmild60G1tQTSc77+5hyPGXyJkDEhds18gYvdNqfc=",
+            "LinkedLids": [
+                {
+                    "lid": "7eleven-lid-test2",
+                    "rbdsCode": "572896",
+                    "optIn": "Y"
+                }
+            ]
+        });
+
+        console.log(tokenReq);
+
+        const date = new Date();
+        date.setTime(new Date().getTime() + (tokenReq.RefreshTokenValidity  * 24 * 60 * 60 * 1000));
+        const expDateMillis = date.getTime().toString();
+        const expDate = btoa(expDateMillis);
+
+        const messagePayload = {
+            action: 'STORE_TOKENS', 
+            payload: {
+                i_t: tokenReq.IdToken, 
+                r_t: tokenReq.RefreshToken, 
+                exp: expDate,
+                env: 'uat',
+                brand: 'poc'
+            }
+        }
+
+        console.log(messagePayload);
 
         storeTokenResponse.innerText = 'Storing token...'
         storeIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
@@ -87,16 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         storeIframe.src = `${targetOrigin}/#/headlessTokens`;
         storeIframe.onload = () => {
             storeTokenResponse.innerText = 'iframe loaded...'
-            storeIframe.contentWindow.postMessage({
-                action: 'STORE_TOKENS', 
-                payload: {
-                    i_t, 
-                    r_t, 
-                    exp,
-                    env: 'uat',
-                    brand: 'poc'
-                }
-            }, targetOrigin);
+            storeIframe.contentWindow.postMessage(messagePayload), targetOrigin);
         };
     }
 
@@ -129,3 +153,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+const generateDppGatewayTokensService = async ({
+	AccountNo,
+	LoginUserName,
+	LoginPassword,
+	LinkedLids,
+}) => {
+    const soaUrl = 'https://d13ba2tth29fcx.cloudfront.net/api'
+	const crypt = new JSEncrypt();
+	crypt.setPublicKey(PUBLIC_KEY);
+	const req = await fetch(`${soaUrl}/generateDppGatewayTokens`, {
+		method: 'POST',
+		headers: {
+			env: uat,
+			sitecode: allin,
+		},
+		body: JSON.stringify({
+			AccountNo,
+			LoginUserName,
+			LoginPassword,
+			LinkedLids,
+		}),
+	}).then((res) => res.json());
+	return req;
+};
