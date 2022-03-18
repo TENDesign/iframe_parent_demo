@@ -164,8 +164,8 @@ const generateDppGatewayTokensService = async ({
 	const req = await fetch(`${soaUrl}/generateDppGatewayTokens`, {
 		method: 'POST',
 		headers: {
-			env: uat,
-			sitecode: allin,
+			env: 'uat',
+			sitecode: 'allin',
 		},
 		body: JSON.stringify({
 			AccountNo,
