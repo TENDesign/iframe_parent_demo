@@ -161,8 +161,6 @@ const generateDppGatewayTokensService = async ({
 	LinkedLids,
 }) => {
     const soaUrl = 'https://d13ba2tth29fcx.cloudfront.net/api'
-	const crypt = new JSEncrypt();
-	crypt.setPublicKey(PUBLIC_KEY);
 	const req = await fetch(`${soaUrl}/generateDppGatewayTokens`, {
 		method: 'POST',
 		headers: {
