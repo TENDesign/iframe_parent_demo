@@ -23,6 +23,14 @@
             z-index: 99;
         }
     </style>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                const registration = await navigator.serviceWorker.register(`/sw.js`);
+                registration && console.log('Access Service Worker registered with scope: ', registration.scope);
+            });
+        }
+    </script>
 </head>
 <body>
     <div style="margin: 1rem; padding: 5rem; border: 1px solid black;">
