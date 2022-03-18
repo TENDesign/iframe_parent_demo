@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         storeIframe.setAttribute('id', 'centralized_cookie_repo_iframe');
         storeIframe.referrerPolicy = 'strict-origin-when-cross-origin';
         storeTokenResponse.parentElement.append(storeIframe);
-        storeIframe.src = targetOrigin;
+        storeIframe.src = `${targetOrigin}/#/headlessTokens`;
         storeIframe.onload = () => {
             storeTokenResponse.innerText = 'iframe loaded...'
             setTimeout(() => {
