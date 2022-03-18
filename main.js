@@ -64,15 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
         getIframe.src = `${targetOrigin}/#/headlessTokens`;
         getIframe.onload = () => {
             getTokenResponse.innerText = 'iframe loaded...'
-            setTimeout(() => {
-                getIframe.contentWindow.postMessage({
-                    action: 'GET_TOKENS',
-                    payload: {
-                        env: 'uat',
-                        brand: 'poc'
-                    }
-                }, targetOrigin);
-            }, 1000);
+            getIframe.contentWindow.postMessage({
+                action: 'GET_TOKENS',
+                payload: {
+                    env: 'uat',
+                    brand: 'poc'
+                }
+            }, targetOrigin);
         };
     }
 
@@ -89,16 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
         storeIframe.src = `${targetOrigin}/#/headlessTokens`;
         storeIframe.onload = () => {
             storeTokenResponse.innerText = 'iframe loaded...'
-            setTimeout(() => {
-                storeIframe.contentWindow.postMessage({
-                    action: 'STORE_TOKENS', 
-                    payload: {
-                        i_t, 
-                        r_t, 
-                        exp
-                    }
-                }, targetOrigin);
-            }, 1000);
+            storeIframe.contentWindow.postMessage({
+                action: 'STORE_TOKENS', 
+                payload: {
+                    i_t, 
+                    r_t, 
+                    exp
+                }
+            }, targetOrigin);
         };
     }
 
