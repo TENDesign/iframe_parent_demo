@@ -10,7 +10,7 @@ self.addEventListener('activate', async (event) => {
 
 async function handleNavigationRequest(event) {
 
-    const request = event.request;
+    let request = event.request;
 
     request = new Request(request, {
         headers: {
